@@ -1,6 +1,6 @@
 const pgp = require('pg-promise')();
 var db = pgp('postgres://sguzzrbjzwawcf:b9b96230384d50890bff7be60b7b32a703beca2827c9f83f3eaaa9c96f6ff251@ec2-54-243-147-162.compute-1.amazonaws.com:5432/d9i6vbnk6jnrb4?ssl=true');
-
+//////////////////Product
 function getAllProducts(req, res) {
     db.any('select * from products')
         .then(function (data) {
@@ -83,6 +83,8 @@ function deleteProduct(req, res) {
 }
 
 
+///////////////////Purchase_item
+
 function getPurchase_item(req, res) {
     db.any('select * from purchase_items')
         .then(function (data) {
@@ -97,7 +99,22 @@ function getPurchase_item(req, res) {
             console.log('ERROR:', error)
         })
 }
-
+function getPurchase_itemByID(req, res) {
+    db.any('select * from purchase_items where id =' + req.params.id)
+        .then(function (data) {
+            res.status(200)
+                .json({
+                    status: 'success',
+                    data: data,
+                    message: 'Retrieved Purchase_items id:' + req.params.id
+                });
+        })
+        .catch(function (error) {
+            res.status(500)
+                .json({ status: "fail", message: "Mission Fail get back" })
+            console.log('ERROR:', error)
+        })
+}
 function DeletePurchase_item(req, res) {
     db.any('DELETE from purchase_items where id=' + req.params.id)
         .then(function (data) {
@@ -160,41 +177,7 @@ function insertPurchase_item(req, res) {
             });
     })
 }
-
-
-
-function getPurchase_itemByID(req, res) {
-    db.any('select * from purchase_items where id =' + req.params.id)
-        .then(function (data) {
-            res.status(200)
-                .json({
-                    status: 'success',
-                    data: data,
-                    message: 'Retrieved Purchase_items id:' + req.params.id
-                });
-        })
-        .catch(function (error) {
-            res.status(500)
-                .json({ status: "fail", message: "Mission Fail get back" })
-            console.log('ERROR:', error)
-        })
-}
-
-function getPurchase(req, res) {
-    db.any('select * from purchases')
-        .then(function (data) {
-            res.status(200)
-                .json({
-                    status: 'success',
-                    data: data,
-                    message: 'Retrieved ALL Purchase'
-                });
-        })
-        .catch(function (error) {
-            console.log('ERROR:', error)
-        })
-}
-
+////////////////////////purchases
 function DeletePurchase(req, res) {
     db.any('DELETE from purchases where purchase_id=' + req.params.id)
         .then(function (data) {
@@ -260,24 +243,8 @@ function insertPurchase(req, res) {
 
 
 
-function getPurchaseByID(req, res) {
-    db.any('select * from purchases where purchase_id =' + req.params.id)
-        .then(function (data) {
-            res.status(200)
-                .json({
-                    status: 'success',
-                    data: data,
-                    message: 'Retrieved Purchase id:' + req.params.id
-                });
-        })
-        .catch(function (error) {
-            res.status(500)
-                .json({ status: "fail", message: "Mission Fail get back" })
-            console.log('ERROR:', error)
-        })
-}
 
-
+////////////////////////User
 function getUser(req, res) {
     db.any('select * from users')
         .then(function (data) {

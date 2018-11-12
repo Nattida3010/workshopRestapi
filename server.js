@@ -34,20 +34,20 @@ app.delete('/api/products/:id', db.deleteProduct);
 app.get('/api/purchase_item', db.getPurchase_item);
 app.get('/api/purchase_item/:id', db.getPurchase_itemByID);
 app.post('/api/purchase_item', db.insertPurchase_item);
-app.post('/api/purchase_item/:id', db.updatePurchase_item);
-app.post('/api/purchase_item/delete/:id', db.DeletePurchase_item);
+app.put('/api/purchase_item/:id', db.updatePurchase_item);
+app.delete('/api/purchase_item/delete/:id', db.DeletePurchase_item);
 
 app.get('/api/purchase', db.getPurchase);
 app.get('/api/purchase/:id', db.getPurchaseByID);
 app.post('/api/purchase', db.insertPurchase);
-app.post('/api/purchase/:id', db.updatePurchase);
-app.post('/api/purchase/delete/:id', db.DeletePurchase);
+app.put('/api/purchase/:id', db.updatePurchase);
+app.delete('/api/purchase/delete/:id', db.DeletePurchase);
 
 app.get('/api/User', db.getUser);
 app.get('/api/User/:id', db.getUserByID);
 app.post('/api/User', db.insertUser);
-app.post('/api/User/:id', db.updateUser);
-app.post('/api/User/delete/:id', db.DeleteUser);
+app.put('/api/User/:id', db.updateUser);
+app.delete('/api/User/delete/:id', db.DeleteUser);
 
 // index page
 app.get('/', function (req, res) {
