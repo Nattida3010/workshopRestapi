@@ -1,5 +1,5 @@
 const pgp = require('pg-promise')();
-var db = pgp('postgres://sguzzrbjzwawcf:b9b96230384d50890bff7be60b7b32a703beca2827c9f83f3eaaa9c96f6ff251@ec2-54-243-147-162.compute-1.amazonaws.com:5432/d9i6vbnk6jnrb4?ssl=true');
+var db = pgp('postgres://lrdjtjdukhcrut:bd49c6185acd5e9cd85aaa0d13509143414ddaf55820e5d15bf76949128703b6@ec2-75-101-138-165.compute-1.amazonaws.com:5432/d16kfvdqhu3qis?ssl=true');
 //////////////////Product
 function getAllProducts(req, res) {
     db.any('select * from products')
