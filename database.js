@@ -85,6 +85,7 @@ function deleteProduct(req, res) {
 
 ///////////////////Purchase_item
 
+
 function getPurchase_item(req, res) {
     db.any('select * from purchase_items')
         .then(function (data) {
@@ -178,6 +179,36 @@ function insertPurchase_item(req, res) {
     })
 }
 ////////////////////////purchases
+function getPurchase(req, res) {
+    db.any('select * from purchases')
+        .then(function (data) {
+            res.status(200)
+                .json({
+                    status: 'success',
+                    data: data,
+                    message: 'Retrieved ALL Purchase_item'
+                });
+        })
+        .catch(function (error) {
+            console.log('ERROR:', error)
+        })
+}
+
+function getPurchaseByID(req, res) {
+    db.any('select * from purchases where purchase_id=' + req.params.id)
+        .then(function (data) {
+            res.status(200)
+                .json({
+                    status: 'success',
+                    data: data,
+                    message: 'Retrieved ALL Purchase_item'
+                });
+        })
+        .catch(function (error) {
+            console.log('ERROR:', error)
+        })
+}
+
 function DeletePurchase(req, res) {
     db.any('DELETE from purchases where purchase_id=' + req.params.id)
         .then(function (data) {
